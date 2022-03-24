@@ -1,21 +1,26 @@
 <%- include('../partials/header') %>
 
 <section>
-  <div>Airline: </div>
+  <div>AIRLINE: </div>
   <div><%= flight.airline %></div>
-  <div>Airport: </div>
+  <br>
+  <div>AIRPORT: </div>
   <div><%= flight.airport %></div>
-  <div>Flight Number: </div>
+  <br>
+  <div>FLIGHT: </div>
   <div><%= flight.flightNo %></div>
-  <div>Departs: </div>
+  <br>
+  <div>DEPARTS: </div>
   <div><%= flight.departs %></div>
 </section>
 
 <br><br><h2>Destinations</h2>
 <form method="POST" action="/flights/<%= flight._id %>/destinations">
-  <label>Destination:</label>
-  <textarea name="content"></textarea>
-  <label>Airport:</label>
+  <label>DESTINATION:</label>
+  <textarea name="dest"></textarea>
+  <br>
+  <br>
+  <label>AIRPORT:</label>
   <select name="airport">
     <option value="AUS">AUS</option>
     <option value="DFW">DFW</option>
@@ -23,6 +28,11 @@
     <option value="LAX">LAX</option>
     <option value="SAN" selected>SAN</option>
   </select>
+  <br>
+  <br>
+  <label>ARRIVAL:
+    <input type="datetime-local" name="arrival">
+  </label>
   <input type="submit" value="Add Destination">
 </form>
 
@@ -30,17 +40,19 @@
   <table>
     <thead>
       <tr>
-        <th>Arrival</th>
-        <th>Destination</th>
-        <th>Airport</th>
+        <th>DESTINATION</th>
+        <th>AIRPORT</th>
+        <th>ARRIVAL</th>
       </tr>
     </thead>
+    <br>
+    <br>
     <tbody>
       <% flight.destinations.forEach(function(d) { %>
         <tr>
-          <td><%= d.createdAt.toLocaleDateString() %></td>
           <td><%= d.dest %></td>
           <td><%= d.airport %></td>
+          <td><%= d.arrival %></td>
         </tr>
       <% }); %>
     </tbody>
